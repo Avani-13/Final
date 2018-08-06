@@ -1,0 +1,49 @@
+Copy the project and uzip it
+Move the entire directory structure to /home/acadgild/examples
+
+Run mysql
+sudo sevice mysqld start
+
+Make sure all the scripts in /home/acadgild/examples/music have  774 permissions
+Run below command:
+
+chmod 774 /home/acadgild/examples/music/*
+
+
+Scripts:
+--------
+generate_web_data.py -- Generates some random data coming from web application
+python /home/acadgild/examples/music/generate_web_data.py
+
+generate_mob_data.py -- Generates some random data coming from mobile application
+python /home/acadgild/examples/music/generate_mob_data.py
+
+start-daemons.sh -- Launches all necessary daemons
+sh /home/acadgild/examples/music/start-daemons.sh
+
+populate-lookup.sh -- Populates lookup tables
+sh /home/acadgild/examples/music/populate-lookup.sh
+
+dataformatting.sh -- Performs data formatting
+sh /home/acadgild/examples/music/dataformatting.sh
+
+hive -f /home/acadgild/examples/music/create_hive_hbase_lookup.hql
+
+data_enrichment.sh -- Performs data enrichment and cleaning
+sh /home/acadgild/examples/music/data_enrichment.sh
+
+data_analysis.sh -- Performs data analysis
+sh /home/acadgild/examples/music/data_analysis.sh
+
+Scheduling:
+-----------
+We'll be using crontab for job scheduling.
+Job has to run every 3 hours
+
+sudo crontab -e
+
+(Press i to enter insert mode)
+
+* */3 * * * /home/acadgild/examples/music/music_project_master.sh
+
+(Press Esc and then type :wq! and press Enter)
