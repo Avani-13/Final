@@ -33,26 +33,25 @@ echo "Done with data population in look up tables !"
 
 echo "Lets do some data formatting now...."
 
-#sh dataformatting.sh
-
-echo "data formatting complete !"
-
-echo "Creating hive tables on top of hbase tables for data enrichment and filtering..."
-
-#sh data_enrichment_filtering_schema.sh
+sh data_enrichment_filtering_schema.sh
 
 echo "Hive table with Hbase Mapping Complete !"
 
 echo "Let us do data enrichment as per the requirement..."
 
-#sh data_enrichment.sh
+sh dataformatting.sh
+
+echo "data formatting complete !"
+
+echo "Creating hive tables on top of hbase tables for data enrichment and filtering..."
+
+sh data_enrichment.sh
 
 echo "Data Enrichment Complete"
 
-
 echo "Lets run some use cases now..."
 
-#sh data_analysis.sh
+sh data_analysis.sh
 
 echo "USE CASES COMPLETE !!"
 
